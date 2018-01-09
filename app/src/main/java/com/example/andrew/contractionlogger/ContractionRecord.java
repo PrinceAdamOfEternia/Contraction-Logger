@@ -6,6 +6,7 @@ package com.example.andrew.contractionlogger;
 
 public class ContractionRecord {
 
+    //TODO: work out how to replace all of these values with timestamps
     private String startTime;
     private String stopTime;
     private String duration;
