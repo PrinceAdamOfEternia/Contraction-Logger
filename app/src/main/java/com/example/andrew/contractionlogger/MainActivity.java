@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ContractionRecord> records = new ArrayList<>();
 
         records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
-        records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
+        records.add(new ContractionRecord("start2", "stop2", "dur2", "freq2"));
 
         //Instantiate a new adapter to load the record items into the list
         RecordAdapter adapter = new RecordAdapter(this, records);
@@ -49,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Create detail for startTimer method
         isTimerRunning = true;
         btnTimer.setText("Stop");
+
+        //TODO: call adapter method to update data_view
     }
 
     private void stopTimer() {
         //TODO: Create detail for stopTimer method
         isTimerRunning = false;
         btnTimer.setText("Start");
+
+        //TODO: call adapter method to update data_view
     }
 }

@@ -54,6 +54,8 @@ public class RecordAdapter extends ArrayAdapter {
         dur_vw.setText(cr.getDuration());
         freq_vw.setText(cr.getFrequency());
 
+        //TODO: Add in colour highlighting to alternate lines
+
 /**
         //Set the background colour corresponding to the category
         int colour = ContextCompat.getColor(getContext(), categoryColour);
