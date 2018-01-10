@@ -30,10 +30,10 @@ public class ContractionRecord {
     /**
      * Set functions are required to update the object when the stop button is pressed
      **/
-    public void setStopTime(String time) {
+/*    public void setStopTime(String time) {
         stopTime = time;
         duration = stopTime - startTime;
-    }
+    }*/
 
     public String getDuration() {
         return duration;
