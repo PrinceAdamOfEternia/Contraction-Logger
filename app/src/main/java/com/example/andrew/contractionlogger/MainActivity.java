@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btnTimer;
     private boolean isTimerRunning = false;
 
     @Override
@@ -19,19 +20,17 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<ContractionRecord> records = new ArrayList<>();
 
-        /**
-         * Instantiate an adapter to display data from the ContractionRecord
-         * objects in the ListView
-         */
+        records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
+        records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
 
-        //TODO: write the RecordAdapter to finish this declation
+        //Instantiate a new adapter to load the record items into the list
         RecordAdapter adapter = new RecordAdapter(this, records);
 
-        // Create a new ListView object to attach to the layout and connect the adapter
+        // Instantiate a new ListView object to attach to the layout and connect the adapter
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        final Button btnTimer = (Button) findViewById(R.id.btn_timer);
+        btnTimer = (Button) findViewById(R.id.btn_timer);
 
         btnTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private void startTimer() {
         //TODO: Create detail for startTimer method
         isTimerRunning = true;
+        btnTimer.setText("Stop");
     }
 
     private void stopTimer() {
         //TODO: Create detail for stopTimer method
         isTimerRunning = false;
+        btnTimer.setText("Start");
     }
 }
