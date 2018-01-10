@@ -41,33 +41,27 @@ public class RecordAdapter extends ArrayAdapter {
                     R.layout.data_view, parent, false);
         }
 
-        final ContractionRecord cr = (ContractionRecord) getItem(position);
-
-        //TODO: Below here is still mostly code from the Miwok app. need to convert.
+        ContractionRecord cr = (ContractionRecord) getItem(position);
 
         //find all the views so that the content of the list item can be configured
-        TextView miwok_vw = (TextView) recordView.findViewById(R.id.list_item_miwok);
-        TextView english_vw = (TextView) recordView.findViewById(R.id.list_item_english);
-        ImageView image_vw = (ImageView) recordView.findViewById(R.id.image_view);
-        ImageView playButton = (ImageView) recordView.findViewById(R.id.play_button);
-        LinearLayout linearLayout = (LinearLayout) recordView.findViewById(R.id.word_layout);
+        TextView start_vw = (TextView) recordView.findViewById(R.id.vw_start_time);
+        TextView stop_vw = (TextView) recordView.findViewById(R.id.vw_stop_time);
+        TextView dur_vw = (TextView) recordView.findViewById(R.id.vw_duration);
+        TextView freq_vw = (TextView) recordView.findViewById(R.id.vw_frequency);
 
-        miwok_vw.setText(wp.getMiwokWord());
-        english_vw.setText(wp.getEnglishWord());
+        start_vw.setText(cr.getStartTime());
+        stop_vw.setText(cr.getStopTime());
+        dur_vw.setText(cr.getDuration());
+        freq_vw.setText(cr.getFrequency());
 
-        // If the item has an image, set the appropriate resource. Otherwise, hide the image
-        if (wp.hasImage()) {
-            image_vw.setVisibility(View.VISIBLE);
-            image_vw.setImageResource(wp.getWordImage());
-        } else {
-            image_vw.setVisibility(View.GONE);
-        }
-
+/**
         //Set the background colour corresponding to the category
         int colour = ContextCompat.getColor(getContext(), categoryColour);
         linearLayout.setBackgroundColor(colour);
         playButton.setBackgroundColor(colour);
-
+ */
         return recordView;
     }
+
+    //TODO: add method for calling notifyDataSetChanged() to update the table
 }
