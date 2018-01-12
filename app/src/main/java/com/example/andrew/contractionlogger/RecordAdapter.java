@@ -64,6 +64,4 @@ public class RecordAdapter extends ArrayAdapter {
  */
         return recordView;
     }
-
-    //TODO: add method for calling notifyDataSetChanged() to update the table
 }
