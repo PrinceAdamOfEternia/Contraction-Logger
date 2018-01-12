@@ -1,22 +1,41 @@
 package com.example.andrew.contractionlogger;
 
+import android.util.Log;
+
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  * Created by Andrew on 9/01/2018.
  */
 
 public class ContractionRecord {
 
-    //TODO: work out how to replace all of these values with timestamps
     private String startTime;
     private String stopTime;
     private String duration;
     private String frequency;
 
-    public ContractionRecord(String start, String stop, String dur, String freq) {
-        startTime = start;
-        stopTime = stop;
-        duration = dur;
-        frequency = freq;
+    private Date dtStartTime;
+    private Date dtStopTime;
+
+    private String dash = "-";
+
+    //Create a formatter for the time
+    private DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT);
+
+    //TODO: Work out correct constructor
+
+    public ContractionRecord(Date stTime) {
+        dtStartTime = stTime;
+
+        //Create a text representation of the start time
+        startTime = df.format(dtStartTime);
+        stopTime = dash;
+        duration = dash;
+        frequency = startTime;
+
+        Log.v("The time: ", startTime);
     }
 
     public String getStartTime() {
@@ -30,10 +49,14 @@ public class ContractionRecord {
     /**
      * Set functions are required to update the object when the stop button is pressed
      **/
-/*    public void setStopTime(String time) {
-        stopTime = time;
-        duration = stopTime - startTime;
-    }*/
+    public void setStopTime(Date spTime) {
+        dtStopTime = spTime;
+
+        //Create a text representation of the stop time
+        stopTime = df.format(dtStopTime);
+
+        //duration = stopTime - startTime;
+    }
 
     public String getDuration() {
         return duration;
@@ -43,5 +66,5 @@ public class ContractionRecord {
         return frequency;
     }
 
-
+    //TODO: add function for formatting duration and frequency values
 }

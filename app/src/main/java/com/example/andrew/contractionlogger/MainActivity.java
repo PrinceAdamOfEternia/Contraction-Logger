@@ -14,10 +14,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnTimer;
-    Calendar myCal = Calendar.getInstance();
     ArrayList<ContractionRecord> records;
     private boolean isTimerRunning = false;
 
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         records = new ArrayList<>();
 
-        records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
-        records.add(new ContractionRecord("start2", "stop2", "dur2", "freq2"));
+        //records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
+        //records.add(new ContractionRecord("start2", "stop2", "dur2", "freq2"));
 
         //Instantiate a new adapter to load the record items into the list
         final RecordAdapter adapter = new RecordAdapter(this, records);
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isTimerRunning) {
-                    stopTimer();
+                    stopTimer(adapter);
                 } else {
                     startTimer(adapter);
                 }
@@ -54,23 +55,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startTimer(RecordAdapter mAdapter) {
-        //TODO: Create detail for startTimer method
+        //Get the current time from the calendar
+        Date currentTime = Calendar.getInstance().getTime();
 
-
-        //use this code to format the time into a string
-        DateFormat df1 = DateFormat.getTimeInstance(DateFormat.SHORT);
-        DateFormat df2 = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
-
-        //Use this code to get the current time
-        Date currentTime = myCal.getTime();
-
-        Log.v("The time: ", df1.format(currentTime));
-        Log.v("The time: ", df2.format(currentTime));
-        //TODO: call adapter method to update data_view
-
-        String sTime = df1.format(currentTime);
-
-        records.add(0, new ContractionRecord(sTime, sTime, sTime, sTime));
+        // Create a new record in the list and update the view
+        records.add(0, new ContractionRecord(currentTime));
         mAdapter.notifyDataSetChanged();
 
         //Update the state and timer button before exiting
@@ -78,11 +67,15 @@ public class MainActivity extends AppCompatActivity {
         btnTimer.setText("Stop");
     }
 
-    private void stopTimer() {
-        //TODO: Create detail for stopTimer method
+    private void stopTimer(RecordAdapter mAdapter) {
+        //Get the current time from the calendar
+        Date currentTime = Calendar.getInstance().getTime();
 
-
-        //TODO: call adapter method to update data_view
+        // Update the current active record and then update the view
+        ContractionRecord record = records.get(0);
+        record.setStopTime(currentTime);
+        records.set(0, record);
+        mAdapter.notifyDataSetChanged();
 
         //Update the state and timer button before exiting
         isTimerRunning = false;
