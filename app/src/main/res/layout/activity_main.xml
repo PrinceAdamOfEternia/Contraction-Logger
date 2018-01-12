@@ -11,38 +11,45 @@
         android:id="@+id/btn_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Start"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="@dimen/column_width"
             android:layout_height="wrap_content"
-            android:text="Start time"/>
+            android:text="Start time"
+            android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
             android:layout_height="wrap_content"
-            android:text="Stop time"/>
+            android:text="Stop time"
+            android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
             android:layout_height="wrap_content"
-            android:text="Duration"/>
+            android:text="Duration"
+            android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
             android:layout_height="wrap_content"
-            android:text="Frequency"/>
+            android:text="Frequency"
+            android:textAppearance="@style/HeaderText"/>
 
     </LinearLayout>
 
     <ListView
         android:id="@+id/list_view"
         android:layout_width="@dimen/list_width"
-        android:layout_height="@dimen/list_height"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical"/>
 
 </LinearLayout>

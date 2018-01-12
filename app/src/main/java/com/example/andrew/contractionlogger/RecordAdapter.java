@@ -56,12 +56,12 @@ public class RecordAdapter extends ArrayAdapter {
 
         //TODO: Add in colour highlighting to alternate lines
 
-/**
-        //Set the background colour corresponding to the category
-        int colour = ContextCompat.getColor(getContext(), categoryColour);
-        linearLayout.setBackgroundColor(colour);
-        playButton.setBackgroundColor(colour);
- */
+       /* //Set the background colour corresponding to the category
+        LinearLayout linearLayout = (LinearLayout) recordView.findViewById(R.id.recordRow);
+
+        int colour = ContextCompat.getColor(getContext(),getResources().getColor(R.color.colorRowBkgnd));
+        linearLayout.setBackgroundColor(getContext().getResources().getColor(R.color.colorRowBkgnd,));*/
+
         return recordView;
     }
 }
