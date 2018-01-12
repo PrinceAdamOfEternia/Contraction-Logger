@@ -15,6 +15,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.media.CamcorderProfile.get;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,9 +59,20 @@ public class MainActivity extends AppCompatActivity {
         //Get the current time from the calendar
         Date currentTime = Calendar.getInstance().getTime();
 
-        // Create a new record in the list and update the view
-        records.add(0, new ContractionRecord(currentTime));
-        mAdapter.notifyDataSetChanged();
+        //If this is the first record, don't try to calculate the frequency
+        if (records.size() == 0) {
+            // Create a new record in the list and update the view
+            records.add(0, new ContractionRecord(currentTime));
+            mAdapter.notifyDataSetChanged();
+        }
+        // If not the first record, send the last start time through so that the frequency can be calculated
+        else {
+            // Get the last start time
+            Date lastTime = records.get(0).getDtStartTime();
+            // Create a new record in the list and update the view
+            records.add(0, new ContractionRecord(currentTime, lastTime));
+            mAdapter.notifyDataSetChanged();
+        }
 
         //Update the state and timer button before exiting
         isTimerRunning = true;
