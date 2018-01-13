@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Width for the contraction log -->
+    <!-- Dimensions for the contraction log -->
     <dimen name="list_width">320dp</dimen>
     <dimen name="list_height">120dp</dimen>
+
+    <!-- Dimensions for the individual table elements -->
     <dimen name="column_width">80dp</dimen>
     <dimen name="row_height">30dp</dimen>
+
+    <!-- Button size -->
+    <dimen name="button_size">200dp</dimen>
+
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.text.DateFormat;
@@ -16,10 +17,12 @@ import java.util.TimeZone;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.media.CamcorderProfile.get;
+import static com.example.andrew.contractionlogger.R.drawable.ic_greenbutton;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnTimer;
+    ImageView btnImage;
     ArrayList<ContractionRecord> records;
     private boolean isTimerRunning = false;
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         btnTimer = (Button) findViewById(R.id.btn_timer);
+        btnImage = (ImageView) findViewById(R.id.img_button);
 
         btnTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //Update the state and timer button before exiting
         isTimerRunning = true;
         btnTimer.setText("Stop");
+        btnImage.setBackgroundResource(R.drawable.ic_redbutton);
     }
 
     private void stopTimer(RecordAdapter mAdapter) {
@@ -92,5 +97,6 @@ public class MainActivity extends AppCompatActivity {
         //Update the state and timer button before exiting
         isTimerRunning = false;
         btnTimer.setText("Start");
+        btnImage.setBackgroundResource(R.drawable.ic_greenbutton);
     }
 }

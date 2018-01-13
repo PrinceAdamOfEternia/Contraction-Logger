@@ -7,39 +7,71 @@
     android:orientation="vertical"
     tools:context="com.example.andrew.contractionlogger.MainActivity">
 
-    <Button
-        android:id="@+id/btn_timer"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Start"/>
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img_button"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_greenbutton"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/ic_pregnant_woman_white_48dp"/>
+
+            <Button
+                android:id="@+id/btn_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/transparent"
+                android:text="Start"
+                android:textColor="@color/colorHighlightText"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorDarkText"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="@dimen/column_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Start time"
             android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Stop time"
             android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Duration"
             android:textAppearance="@style/HeaderText"/>
 
         <TextView
             android:layout_width="@dimen/column_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Frequency"
             android:textAppearance="@style/HeaderText"/>
 
