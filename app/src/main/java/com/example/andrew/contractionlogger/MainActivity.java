@@ -22,6 +22,9 @@ import static com.example.andrew.contractionlogger.R.drawable.ic_greenbutton;
 
 public class MainActivity extends AppCompatActivity {
 
+    //TODO: Non-volatile data storage
+    //TODO: Add a reset button
+    //TODO: display some basic statistics
     TextView btnTimer;
     ImageView btnImage;
     ArrayList<ContractionRecord> records;

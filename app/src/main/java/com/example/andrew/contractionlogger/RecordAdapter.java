@@ -45,12 +45,12 @@ public class RecordAdapter extends ArrayAdapter {
 
         //find all the views so that the content of the list item can be configured
         TextView start_vw = (TextView) recordView.findViewById(R.id.vw_start_time);
-        TextView stop_vw = (TextView) recordView.findViewById(R.id.vw_stop_time);
+        //TextView stop_vw = (TextView) recordView.findViewById(R.id.vw_stop_time);
         TextView dur_vw = (TextView) recordView.findViewById(R.id.vw_duration);
         TextView freq_vw = (TextView) recordView.findViewById(R.id.vw_frequency);
 
         start_vw.setText(cr.getStartTime());
-        stop_vw.setText(cr.getStopTime());
+        //stop_vw.setText(cr.getStopTime());
         dur_vw.setText(cr.getDuration());
         freq_vw.setText(cr.getFrequency());
 

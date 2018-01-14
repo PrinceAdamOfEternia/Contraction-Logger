@@ -13,13 +13,13 @@
         android:layout_width="@dimen/column_width"
         android:layout_height="match_parent"
         android:textAppearance="@style/TableText"/>
-
-    <TextView
-        android:id="@+id/vw_stop_time"
-        android:layout_width="@dimen/column_width"
-        android:layout_height="match_parent"
-        android:textAppearance="@style/TableText"/>
-
+    <!--
+        <TextView
+            android:id="@+id/vw_stop_time"
+            android:layout_width="@dimen/column_width"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/TableText"/>
+    -->
     <TextView
         android:id="@+id/vw_duration"
         android:layout_width="@dimen/column_width"
