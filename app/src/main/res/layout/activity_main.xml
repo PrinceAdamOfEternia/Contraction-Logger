@@ -32,15 +32,17 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@mipmap/ic_pregnant_woman_white_48dp"/>
 
-            <Button
+            <TextView
                 android:id="@+id/btn_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@android:color/transparent"
                 android:text="Start"
-                android:textColor="@color/colorHighlightText"/>
-
+                android:textAllCaps="true"
+                android:textColor="@color/colorHighlightText"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
         </LinearLayout>
     </RelativeLayout>
 

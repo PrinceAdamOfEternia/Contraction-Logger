@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import static com.example.andrew.contractionlogger.R.drawable.ic_greenbutton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnTimer;
+    TextView btnTimer;
     ImageView btnImage;
     ArrayList<ContractionRecord> records;
     private boolean isTimerRunning = false;
@@ -33,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         records = new ArrayList<>();
 
-        //records.add(new ContractionRecord("start1", "stop1", "dur1", "freq1"));
-        //records.add(new ContractionRecord("start2", "stop2", "dur2", "freq2"));
-
         //Instantiate a new adapter to load the record items into the list
         final RecordAdapter adapter = new RecordAdapter(this, records);
 
@@ -43,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-        btnTimer = (Button) findViewById(R.id.btn_timer);
+        btnTimer = (TextView) findViewById(R.id.btn_timer);
         btnImage = (ImageView) findViewById(R.id.img_button);
 
-        btnTimer.setOnClickListener(new View.OnClickListener() {
+        btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isTimerRunning) {
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     startTimer(adapter);
                 }
-
             }
         });
     }
