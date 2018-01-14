@@ -55,12 +55,15 @@ public class RecordAdapter extends ArrayAdapter {
         freq_vw.setText(cr.getFrequency());
 
         //TODO: Add in colour highlighting to alternate lines
-
-       /* //Set the background colour corresponding to the category
+        //Set the background colour for the rows in the list so that it alternates for readability
         LinearLayout linearLayout = (LinearLayout) recordView.findViewById(R.id.recordRow);
-
-        int colour = ContextCompat.getColor(getContext(),getResources().getColor(R.color.colorRowBkgnd));
-        linearLayout.setBackgroundColor(getContext().getResources().getColor(R.color.colorRowBkgnd,));*/
+        if (position % 2 == 0) {
+            //Make the background color grey
+            linearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorRowBkgnd));
+        } else {
+            //Make the background color white
+            linearLayout.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorHighlightText));
+        }
 
         return recordView;
     }
