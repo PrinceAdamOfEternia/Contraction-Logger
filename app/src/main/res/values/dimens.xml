@@ -3,6 +3,7 @@
     <!-- Dimensions for the contraction log -->
     <dimen name="list_width">320dp</dimen>
     <dimen name="list_height">120dp</dimen>
+    <dimen name="header_height">35dp</dimen>
 
     <!-- Dimensions for the individual table elements -->
     <dimen name="column_width">80dp</dimen>
