@@ -92,4 +92,9 @@ public class ContractionRecord {
 
         return (minutes + "m " + seconds + "s");
     }
+
+    @Override
+    public String toString() {
+        return startTime + "," + stopTime + "," + duration + "," + frequency + "," + dtStartTime.toString();
+    }
 }
