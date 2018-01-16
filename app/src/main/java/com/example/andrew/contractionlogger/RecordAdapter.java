@@ -54,7 +54,6 @@ public class RecordAdapter extends ArrayAdapter {
         dur_vw.setText(cr.getDuration());
         freq_vw.setText(cr.getFrequency());
 
-        //TODO: Add in colour highlighting to alternate lines
         //Set the background colour for the rows in the list so that it alternates for readability
         LinearLayout linearLayout = (LinearLayout) recordView.findViewById(R.id.recordRow);
         if (position % 2 == 0) {
