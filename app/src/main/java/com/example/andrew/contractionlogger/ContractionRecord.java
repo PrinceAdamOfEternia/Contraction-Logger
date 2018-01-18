@@ -1,11 +1,8 @@
 package com.example.andrew.contractionlogger;
 
-import android.util.Log;
 
 import java.text.DateFormat;
 import java.util.Date;
-
-import static java.lang.Math.round;
 
 /**
  * Created by Andrew on 9/01/2018.
@@ -44,6 +41,14 @@ public class ContractionRecord {
         stopTime = dash;
         duration = dash;
         frequency = dash;
+    }
+
+    public ContractionRecord(String start, String stop, String dur, String freq, String date) {
+        startTime = start;
+        stopTime = stop;
+        duration = dur;
+        frequency = freq;
+        dtStartTime = df.parse(date);
     }
 
     public String getStartTime() {
