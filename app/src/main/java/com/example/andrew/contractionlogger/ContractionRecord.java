@@ -15,40 +15,41 @@ public class ContractionRecord {
     private String duration;
     private String frequency;
 
-    private Date dtStartTime;
-    private Date dtStopTime;
+    private long dtStartTime;
+    private long dtStopTime;
 
     private String dash = "-";
 
     //Create a formatter for the time
     private DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT);
+    private DateFormat restore = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
 
-    public ContractionRecord(Date stTime, Date lastTime) {
-        dtStartTime = stTime;
+    public ContractionRecord(Date stTime, long lastTime) {
+        dtStartTime = stTime.getTime();
 
         //Create a text representation of the start time
-        startTime = df.format(dtStartTime);
+        startTime = df.format(stTime);
         stopTime = dash;
         duration = dash;
-        frequency = createDurationString(dtStartTime.getTime() - lastTime.getTime());
+        frequency = createDurationString(dtStartTime - lastTime);
     }
 
     public ContractionRecord(Date stTime) {
-        dtStartTime = stTime;
+        dtStartTime = stTime.getTime();
 
         //Create a text representation of the start time
-        startTime = df.format(dtStartTime);
+        startTime = df.format(stTime);
         stopTime = dash;
         duration = dash;
         frequency = dash;
     }
 
-    public ContractionRecord(String start, String stop, String dur, String freq, String date) {
+    public ContractionRecord(String start, String stop, String dur, String freq, long date) {
         startTime = start;
         stopTime = stop;
         duration = dur;
         frequency = freq;
-        dtStartTime = df.parse(date);
+        dtStartTime = date;
     }
 
     public String getStartTime() {
@@ -63,15 +64,15 @@ public class ContractionRecord {
      * Update the object when the stop button is pressed
      **/
     public void setStopTime(Date spTime) {
-        dtStopTime = spTime;
+        dtStopTime = spTime.getTime();
 
         //Create a text representation of the stop time
-        stopTime = df.format(dtStopTime);
+        stopTime = df.format(spTime);
 
-        duration = createDurationString(dtStopTime.getTime() - dtStartTime.getTime());
+        duration = createDurationString(dtStopTime - dtStartTime);
     }
 
-    public Date getDtStartTime() {
+    public long getDtStartTime() {
         return dtStartTime;
     }
 
@@ -100,6 +101,6 @@ public class ContractionRecord {
 
     @Override
     public String toString() {
-        return startTime + "," + stopTime + "," + duration + "," + frequency + "," + dtStartTime.toString();
+        return startTime + "," + stopTime + "," + duration + "," + frequency + "," + dtStartTime;
     }
 }
