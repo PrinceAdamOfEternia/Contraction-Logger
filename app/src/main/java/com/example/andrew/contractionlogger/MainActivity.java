@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,6 @@ import static com.example.andrew.contractionlogger.R.drawable.ic_greenbutton;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO: Non-volatile data storage
     //TODO: Add a reset button
     //TODO: display some basic statistics
     TextView btnTimer;
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnTimer = (TextView) findViewById(R.id.btn_timer);
         btnImage = (ImageView) findViewById(R.id.img_button);
+        Button btnReset = (Button) findViewById(R.id.btn_reset);
 
         //Set button to correct state
         if (isTimerRunning) {
@@ -87,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     startTimer(adapter);
                 }
+            }
+        });
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTimerRunning) {
+                    stopTimer(adapter);
+                }
+                records.clear();
+                adapter.notifyDataSetChanged();
             }
         });
     }

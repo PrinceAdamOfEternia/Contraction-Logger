@@ -95,8 +95,17 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="@dimen/list_width"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"/>
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimaryLight"
+        android:text="Reset"
+        android:textColor="@color/colorHighlightText"/>
 
 </LinearLayout>
