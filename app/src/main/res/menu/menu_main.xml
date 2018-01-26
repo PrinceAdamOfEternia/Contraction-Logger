@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".activity.MainActivity">
+
+    <!-- Option to clear the last record, always in overflow -->
+    <item
+        android:id="@+id/clear_last"
+        android:title="Clear last"
+        app:showAsAction="never"/>
+
+    <!-- Option to clear all records, always in overflow -->
+    <item
+        android:id="@+id/clear_all"
+        android:title="Clear all"
+        app:showAsAction="never"/>
+
+</menu>

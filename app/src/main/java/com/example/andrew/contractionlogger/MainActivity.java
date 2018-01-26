@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +32,6 @@ import static com.example.andrew.contractionlogger.R.drawable.ic_greenbutton;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO: Add a reset button
     //TODO: display some basic statistics
     TextView btnTimer;
     ImageView btnImage;
@@ -38,11 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean isTimerRunning = false;
     private boolean loadOldData = false;
     private String filename = "Records_file";
+    private RecordAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         //Restore previous state and data
         //Get state from shared preferences
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Instantiate a new adapter to load the record items into the list
-        final RecordAdapter adapter = new RecordAdapter(this, records);
+        adapter = new RecordAdapter(this, records);
 
         // Instantiate a new ListView object to attach to the layout and connect the adapter
         ListView listView = (ListView) findViewById(R.id.list_view);
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnTimer = (TextView) findViewById(R.id.btn_timer);
         btnImage = (ImageView) findViewById(R.id.img_button);
-        Button btnReset = (Button) findViewById(R.id.btn_reset);
+//        Button btnReset = (Button) findViewById(R.id.btn_reset);
 
         //Set button to correct state
         if (isTimerRunning) {
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
+ /*       btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isTimerRunning) {
@@ -100,26 +105,63 @@ public class MainActivity extends AppCompatActivity {
                 records.clear();
                 adapter.notifyDataSetChanged();
             }
-        });
+        });*/
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.clear_all:
+                if (isTimerRunning) {
+                    stopTimer(adapter);
+                }
+                records.clear();
+                loadOldData = false;
+                adapter.notifyDataSetChanged();
+                break;
+
+            case R.id.clear_last:
+                if (isTimerRunning) {
+                    stopTimer(adapter);
+                }
+                if (records.size() != 0) {
+                    records.remove(0);
+                }
+                if (records.size() == 0) {
+                    loadOldData = false;
+                }
+                adapter.notifyDataSetChanged();
+                break;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     /*  @Override
-      protected void onStop() {
-          super.onStop();
+              protected void onStop() {
+                  super.onStop();
 
-          //Save state and data
-          //Save state to shared preferences
-          SharedPreferences settings = getPreferences(MODE_PRIVATE);
-          SharedPreferences.Editor editor = settings.edit();
-          editor.putBoolean("timerState", isTimerRunning);
-          editor.putBoolean("dataExists", loadOldData);
-          editor.commit();
-          Log.v("onStop","1");
+                  //Save state and data
+                  //Save state to shared preferences
+                  SharedPreferences settings = getPreferences(MODE_PRIVATE);
+                  SharedPreferences.Editor editor = settings.edit();
+                  editor.putBoolean("timerState", isTimerRunning);
+                  editor.putBoolean("dataExists", loadOldData);
+                  editor.commit();
+                  Log.v("onStop","1");
 
-          //Save records to internal data storage
-          storeRecords(records);
-      }
-  */
+                  //Save records to internal data storage
+                  storeRecords(records);
+              }
+          */
     @Override
     protected void onPause() {
         super.onPause();
